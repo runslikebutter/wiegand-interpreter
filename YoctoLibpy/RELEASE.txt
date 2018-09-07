@@ -1,0 +1,5 @@
+Python v1.10.31315
+
+- Add support for phaseMove in PWMOutput class
+- Add support for config change notifications
+- Improve error recovery with WebSocket connection

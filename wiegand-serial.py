@@ -17,7 +17,7 @@ import os, sys
 # add ../../Sources to the PYTHONPATH
 cwd = os.getcwd()
 #print("{}".format(cwd))
-sys.path.append(os.path.join("{}/YoctoLib/Sources/".format(cwd)))
+sys.path.append(os.path.join("{}/YoctoLibpy/Sources/".format(cwd)))
 
 vars_before = set(dir())
 
@@ -26,7 +26,7 @@ import json
 def getpwvhub():
     #   get the pw from the user so we don't have to store it in this Failed
     global pwvhub_in
-    pwvhub_in = input("Enter password for VirtualHub local HTTP interface:    ")
+    pwvhub_in = input("Enter password for VirtualHub local HTTP interface, or press enter to use default BMX pw:    ") or "butterfly"
 
 def clearscr():
     os.system('cls' if os.name=='nt' else 'clear')
@@ -46,9 +46,9 @@ getpwvhub()
 vhub_addr = "http://admin:{0}@127.0.0.1:4444".format(pwvhub_in)
 #print("vhub_addr =   {}".format(vhub_addr))
 
-#import yocto_api
+import yocto_api
 from yocto_api import *
-#import yocto_serialport
+import yocto_serialport
 from yocto_serialport import *
 
 vars_after = set(dir()) - vars_before - {'vars_before'}
